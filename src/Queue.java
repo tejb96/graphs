@@ -56,7 +56,6 @@ public class Queue {
 
 	// Add any other parts needed
 	public boolean isEmpty() {
-		if(queue==null) {return true;}
-		else {return false;}
+		return (head == -1 || head > tail);
 	}
 }

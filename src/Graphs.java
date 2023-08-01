@@ -27,22 +27,34 @@ public class Graphs {
 	         System.out.println(); 
 	      }
 		
+		System.out.println("\nBFS visit of the graph:");
 		Queue q=new Queue(m);
-		boolean[] visited=new boolean[m];
+		boolean[] visited=new boolean[n];
 		Arrays.fill(visited, false);
 		
-		int vis;
+		int vis=0;
+		q.enqueue(vis);
+		visited[vis]=true;
 		
 		while(!q.isEmpty()) {
 			vis=q.dequeue();
 			
-			System.out.print(vis+" ");
+			System.out.println("Current node being processed for adjacent nodes: "+vis);
 			
 			for(int i=0;i<n;i++) {
 				if(adjMatrix[vis][i]==1&&(!visited[i])) {
+					System.out.println("Unvisited adjacent nodes exist for "+vis);
 					q.enqueue(i);
 					visited[i]=true;
 				}
+			}
+			System.out.println("No more unvisited adjacent nodes exist for "+vis);
+		}
+		
+		System.out.println("\nBFS visit sequence of the graph:");
+		for(int i=0;i<visited.length;i++) {
+			if(visited[i]==true) {
+				System.out.print(i+" ");				
 			}
 		}
 		
